@@ -54,20 +54,83 @@
 	
 
 # Casos de uso
+## Whatsapp
+En 2016, WhatsApp alcanzó más de mil millones de usuarios y tenía las siguientes estadísticas de carga:
+42 mil millones de mensajes enviados diariamente
+1.6 mil millones de imágenes enviadas diariamente
+250 millones de videos enviados diariamente
+
+Estan fuertemente Escritos con OTP (Open Telecom Platform), que es como la "biblioteca estandar" para construir aplicaciones robustas, escalables y tolerantes al fallo
+
+## Discord
+Desde el principio, Discord ha sido un adoptante temprano de Elixir. La máquina virtual de Erlang era el candidato perfecto para el sistema altamente concurrente y en tiempo real que estábamos buscando construir.
+
+## Bancolombia for the win (algún día)
+Experiencia propia, un dia dieron le pagaron a una entidad especializada en Elixir/erlang para dar una charlita a la cual asistí, de igual sus repos tienen proyectos de elixir para la comunidad
+
+(ejemplo)[https://github.com/bancolombia/distributed-performance-analyzer]
+(Async DataFlow)[https://github.com/bancolombia/async-dataflow]
+entregar respuestas asíncronas en tiempo real a las aplicaciones cliente
+
+## Helium
+Blockchain que opera principalmente en Iot Devices, y la gran parte de su core esta escrito en elixir
+
+## Sonic Pi
+Programa para hacer música con codigo. el "orquestador de instrumentos" está escrito en elixir
+
+
+## Farmbot
+FarmBot es un proyecto de agricultura de precisión CNC de código abierto que incluye una máquina robótica agrícola, software y documentación, incluyendo un repositorio de datos agrícolas. Las máquinas de FarmBot utilizan tecnología IoT para facilitar a los agricultores la gestión remota de sus jardines.
 
 
 
+# Frameworks
+## Phoenix/Ash
+## Phoenix
+Cracion de páginas web "Fullstack"
+## Ash 
+Es un framework "OPINIONADO" para construir tu capa de aplicación, independiente de cómo se expone o consume. No es una alternativa a frameworks como Phoenix, sino más bien un complemento para ellos.
+
+## Machine Learning
+### NX
+Nx es el proyecto que inició todo. Juega un papel similar al de Numpy dentro de la comunidad de Elixir, con soporte para compilación justo a tiempo (JIT) tanto para CPUs como para GPUs
+
+### Explorer
+Dataframes para Elixir
+
+### Scholar
+enfocado en técnicas tradicionales de aprendizaje automático (scikit-learn).
+
+
+
+### NERVES
+Framework para sistemas embebidos.
+
+
+# Syntaxs
+todo es funciones y modules, listas, tuplas, mapas, coneccion a c
 
 # Recursos interactivos
 
 [curso completo self paced de programacion funcional en Elixir](https://www.kth.se/social/course/ID1019/)
 
 [excercism.io](https://exercism.io/tracks/elixir)
+
 # Recursos
 [Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/introduction#what-is-erlang)
 [let it crash philosophy](https://www.youtube.com/watch?v=sz3tMPkl5hI)
 [elixir documentary](https://www.youtube.com/watch?v=lxYFOM3UJzo)
 [programs as people](https://leftoversalad.com/c/015_programmingpeople/)
 
+[whats app](How WhatsApp scaled to 1 billion users with only 50 engineers)
+
+[discord](https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users)
+
+[helium](https://docs.helium.com/faq/open-source/)
+
+[phoenix](https://www.phoenixframework.org)
+
+
+[ash](https://hexdocs.pm/ash/what-is-ash.html)
 
 
