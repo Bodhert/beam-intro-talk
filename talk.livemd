@@ -1,0 +1,321 @@
+<!-- livebook:{"file_entries":[{"name":"PPerlang.png","type":"attachment"},{"name":"actores_1.png","type":"attachment"},{"name":"actores_2.png","type":"attachment"},{"name":"actores_3.png","type":"attachment"},{"name":"actores_4.png","type":"attachment"},{"name":"actores_5.png","type":"attachment"},{"name":"actores_6.png","type":"attachment"},{"name":"elixir.png","type":"attachment"}]} -->
+
+# BEAM ecosystem
+
+```elixir
+Mix.install(
+  [
+    {:kino, "~> 0.14.1"},
+    {:kino_bumblebee, "~> 0.5.0"},
+    {:exla, ">= 0.0.0"}
+  ],
+  config: [nx: [default_backend: EXLA.Backend]]
+)
+```
+
+## Erlang
+
+lenguaje de programación funcional, Dinamico, que corre sobre una maquina virtual (BEAM), diseñado especialmente concurrencia y la alta disponibilidad .
+ inventado incialmente para manejar sistemas de telecomunicaciones. en 1986 por Ericsson.
+
+<!-- livebook:{"break_markdown":true} -->
+
+![erlang](files/PPerlang.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+Una de las filosofias con las que se diseño el lenguaje es "let it crash", es decir, los sistemas eventualmente
+ fallarán,es casí que imposible manejar todos los errores, entonces lo que hago es isolar el error en un proceso (no confundir con el concepto de proceso del Sistema Operativo),  "matarlo" y 
+ volver a comenzar en un estado conocido.
+
+<!-- livebook:{"break_markdown":true} -->
+
+se han preguntado muchas veces como simplemente apagando y encediendo la computadora se arregla el problema?
+ bueno es algo similar.
+
+## Elixir
+
+es un lenguaje de programación funcional inventado en el 2011,que corre sobre la misma maquina virtual de erlang.
+ el creador de Elixir, se preocupaba por que no habian casi buenos lenguajes para manejar de manera eficiente y efectiva la concurrencia, por lo que decidio crear Elixir, Es parecido a Erlang, pero con una sintaxis mas amigable y moderna. El creador era core contributor de Ruby on Rails, por lo que Elixir se asemeja en cierta forma a Ruby en cuanto a la sintaxis.
+
+<!-- livebook:{"break_markdown":true} -->
+
+![elixir](files/elixir.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Elixir 101
+
+Si se puediera definir los bloques de construccion del lenguaje, en mi **OPINIÓN** serían,
+
+* modulos
+* funciones
+* listas
+* mapas
+* tuplas
+* pattern matching
+* recursión
+
+```elixir
+# Modulos
+defmodule Hello do
+
+  # Funciones
+  def world do
+    "Hello World"
+  end
+
+  # Pattern matching
+  def world(name) do
+    "Hello #{name}"
+  end
+
+  # Lista
+  def world_list do
+    "Hello World"
+    |> String.split()
+
+    # ["Hello", "World"]
+  end
+
+  def world_tuple do
+    {:hello, :world}
+  end
+
+  def world_map do
+    %{"hello" => "world"}
+  end
+  
+end
+
+Hello.world_map()
+
+```
+
+* Es de tipado dinámico, es decir no especificamos el tipo de dato, la maquina lo infier
+* inmutable, cuando se modifica algo, en verdad es un nuevo termino
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Menciones honorificas de otros lenguajes en BEAM
+
+* [Gleam (2016)](https://gleam.run) soporte nativo de tipos y compilación a JavaScript
+* [LFE (2008)](https://lfe.io) implementación de lisp
+
+## Modelo de actores
+
+Los actores son la unidad basica de computación.
+
+<!-- livebook:{"break_markdown":true} -->
+
+![actores_1](files/actores_1.png)
+
+```elixir
+Kino.Process.render_seq_trace(fn ->
+  _armando = self()
+
+  _betty = spawn(fn ->
+    :ok
+  end)
+  
+
+end)
+```
+
+Los actores se comunican entre si enviandose mensajes
+
+<!-- livebook:{"break_markdown":true} -->
+
+![actores 2](files/actores_2.png)
+
+```elixir
+Kino.Process.render_seq_trace(fn ->
+  _armando = self()
+  
+  betty = spawn(fn ->
+    :ok
+  end)
+
+  send(betty, "te amo")
+  
+end)
+```
+
+Los actores solo se comunican entre si mediante mensajes, es lo único que puede modificar el "estado" del otro
+
+<!-- livebook:{"break_markdown":true} -->
+
+![actores 3](files/actores_3.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+![actores 4](files/actores_4.png)
+
+```elixir
+Kino.Process.render_seq_trace(fn ->
+  armando = self()
+
+  betty = spawn(fn ->
+   receive do
+     "te amo!" -> send(armando,"si? ha bueno")
+   end 
+  end)
+
+  send(betty, "te amo!")
+
+  receive do
+    "tambien te amo" -> "toy feliz"
+    "si? ha bueno" -> "toy triste"
+  end
+  end)
+
+```
+
+introducir nuevos actores es muy barato en terminos computacionales (a diferencia de en la vida real)
+
+<!-- livebook:{"break_markdown":true} -->
+
+![actores 5](files/actores_5.png)
+
+<!-- livebook:{"break_markdown":true} -->
+
+![actores 6](files/actores_6.png)
+
+```elixir
+Kino.Process.render_seq_trace(fn ->
+  _armando = self()
+
+  _betty = spawn(fn -> :ok end)
+
+  _marce = spawn(fn -> :ok end)
+  _patricia = spawn(fn -> :ok end)
+  end)
+```
+
+todos se pueden hablar entre si mientras tenga sus direcciones (PID), incluso puedo crear todo ecomoda si queremos
+
+```elixir
+for _ <- 0..100 do
+  spawn(fn -> :ok  end)
+end
+```
+
+## de eso tan bueno... no dan tanto :(
+
+* No es una bala de plata
+
+* puede ser muy bueno para manejar un servidor de videojuegos mas no para escribir un videojuego: [servidor de wow en elixir ](https://pikdum.dev/posts/thistle-tea/)
+
+* hacer paralelismo o concurrencia sobre cualquier problema, no lo va a solucionar mas rapido necesariamente, incluso lo podria hacer mas lento
+
+* escoge la herramienta adecuada para el trabajo adecuado, o incluso combina varias herramientas para lograr el mejor resultado posible
+
+* No es particularmente bueno en procesamiento de señales (audio o imagenes), escribir drivers de sistema operativos, en general cosas que requieran muy bajo nivel, y operaciones de alto rendimiento en el espacio numerico, aunque se esta haciendo un esfuerzo para cambiar esto, en especial para apuntarle al público de machine learning,
+
+* a pesar de sus limitantes, existe herramientas curiosas, como 🤯 [modelado 3d](https://www.wings3d.com).
+
+## Casos de uso exitoso
+
+### Whatsapp
+
+<!-- livebook:{"break_markdown":true} -->
+
+En 2016, [WhatsApp](https://blog.quastor.org/p/whatsapp-scaled-1-billion-users-50-engineers) alcanzó más de mil millones de usuarios y tenía las siguientes estadísticas de carga:
+42 mil millones de mensajes enviados diariamente
+1.6 mil millones de imágenes enviadas diariamente
+250 millones de videos enviados diariamente
+
+* tiene uno de los cluster mas grandes conocidos de erlang
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Discord
+
+Fue de los primeros que le aposto a elixir, en el [2017](https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users) tenian  5  milliones de usarios concurrentes y  millones de eventos por segundo
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Menciones honorificas
+
+* [Helium](https://docs.helium.com/faq/open-source/#helium-blockchain): Blockchain que opera principalmente en Iot Devices, y la gran parte de su core esta escrito en erlang
+* [Sonic Pi](https://sonic-pi.net): Programa para hacer música con codigo. el "orquestador de instrumentos" está escrito en elixir
+* [Farmbot](https://farm.bot): Proyecto de agricultura de precisión. Las máquinas de FarmBot utilizan tecnología IoT para facilitar a los agricultores la gestión remota de sus jardines.
+* Bancolombia for the win (algún día): le están apostando a usar elixir:
+  * https://github.com/bancolombia/distributed-performance-analyzer
+  * https://github.com/bancolombia/async-dataflow
+* [touring live](https://touring-live.netlify.app/) aplicación en la que le das una foto de un lugar túristico y te detalles o una visita guiada.
+
+## Frameworks
+
+### WEB/creacion de aplicaciones
+
+* [phoenix](https://www.phoenixframework.org): el default para aplicaciones web.
+* [ash](https://hexdocs.pm/ash/what-is-ash.html): no es solo orientado a aplicaciones web, es más algo opinionado para constuir la capa de aplicación
+
+### Machine learning
+
+* [NX](https://hexdocs.pm/nx/intro-to-nx.html) : Busca compilar nativamente un subset de elixir y apuntarle a las gpus
+
+<!-- livebook:{"attrs":"eyJjb21waWxlciI6ImV4bGEiLCJtYXhfbmV3X3Rva2VucyI6MTAwLCJ0YXNrX2lkIjoic3BlZWNoX3RvX3RleHQiLCJ2YXJpYW50X2lkIjoid2hpc3Blcl90aW55In0","chunks":[[0,654],[656,1063]],"kind":"Elixir.KinoBumblebee.TaskCell","livebook_object":"smart_cell"} -->
+
+```elixir
+{:ok, model_info} = Bumblebee.load_model({:hf, "openai/whisper-tiny"})
+{:ok, featurizer} = Bumblebee.load_featurizer({:hf, "openai/whisper-tiny"})
+{:ok, tokenizer} = Bumblebee.load_tokenizer({:hf, "openai/whisper-tiny"})
+{:ok, generation_config} = Bumblebee.load_generation_config({:hf, "openai/whisper-tiny"})
+generation_config = Bumblebee.configure(generation_config, max_new_tokens: 100)
+
+serving =
+  Bumblebee.Audio.speech_to_text_whisper(
+    model_info,
+    featurizer,
+    tokenizer,
+    generation_config,
+    compile: [batch_size: 4],
+    chunk_num_seconds: 30,
+    timestamps: :segments,
+    stream: true,
+    defn_options: [compiler: EXLA]
+  )
+
+audio_input = Kino.Input.audio("Audio", sampling_rate: featurizer.sampling_rate)
+form = Kino.Control.form([audio: audio_input], submit: "Run")
+frame = Kino.Frame.new()
+
+Kino.listen(form, fn %{data: %{audio: audio}} ->
+  if audio do
+    audio =
+      audio.file_ref
+      |> Kino.Input.file_path()
+      |> File.read!()
+      |> Nx.from_binary(:f32)
+      |> Nx.reshape({:auto, audio.num_channels})
+      |> Nx.mean(axes: [1])
+
+    Kino.Frame.render(frame, Kino.Text.new("(Start of transcription)", chunk: true))
+
+    for chunk <- Nx.Serving.run(serving, audio) do
+      [start_mark, end_mark] =
+        for seconds <- [chunk.start_timestamp_seconds, chunk.end_timestamp_seconds] do
+          seconds |> round() |> Time.from_seconds_after_midnight() |> Time.to_string()
+        end
+
+      text = "
+#{start_mark}-#{end_mark}: #{chunk.text}"
+      Kino.Frame.append(frame, Kino.Text.new(text, chunk: true))
+    end
+
+    Kino.Frame.append(frame, Kino.Text.new("\n(End of transcription)", chunk: true))
+  end
+end)
+
+Kino.Layout.grid([form, frame], boxed: true, gap: 16)
+```
+
+### NERVES
+
+[Framework](https://nerves-project.org) para sistemas embebidos
+
+<!-- livebook:{"break_markdown":true} -->
+
+

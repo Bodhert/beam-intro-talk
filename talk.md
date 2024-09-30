@@ -24,7 +24,7 @@
 - LFE (2008) Lisp
 
 # Modelo de actores
-- Los actores son la unidad basica de de computación.
+- Los actores son la unidad basica  de computación.
 ![actores 1](resources/images/actores_1.png)
 
 - Los actores se comunican entre si enviandose mensajes
@@ -87,7 +87,7 @@ FarmBot es un proyecto de agricultura de precisión CNC de código abierto que i
 # Frameworks
 ## Phoenix/Ash
 ## Phoenix
-Cracion de páginas web "Fullstack"
+ "Fullstack" framework para web
 ## Ash 
 Es un framework "OPINIONADO" para construir tu capa de aplicación, independiente de cómo se expone o consume. No es una alternativa a frameworks como Phoenix, sino más bien un complemento para ellos.
 
@@ -132,5 +132,10 @@ todo es funciones y modules, listas, tuplas, mapas, coneccion a c
 
 
 [ash](https://hexdocs.pm/ash/what-is-ash.html)
+
+[nerves](https://nerves-project.org)
+
+[concurrency and ai by josevalim](https://www.youtube.com/watch?v=pas9WdWIBHs)
+
 
 
