@@ -55,7 +55,7 @@ Si se pudieran definir los bloques de construcción del lenguaje, en mi opinión
 # Modulos
 defmodule Hello do
 
-  # Funciones
+  # Funciones publicas o privadas
   def world do
     "Hello World"
   end
@@ -70,6 +70,7 @@ defmodule Hello do
     "Hello World"
     |> String.split()
 
+    # String.split("Hello World")
     # ["Hello", "World"]
   end
 
@@ -82,6 +83,11 @@ defmodule Hello do
   end
   
 end
+
+
+# Pattern matching
+# [head | tail] = [1, "hola", :ok]
+# tail
 
 Hello.world_map()
 
@@ -161,7 +167,7 @@ Kino.Process.render_seq_trace(fn ->
     "tambien te amo" -> "toy feliz"
     "si? ha bueno" -> "toy triste"
   end
-  end)
+end)
 
 ```
 
@@ -189,7 +195,7 @@ Kino.Process.render_seq_trace(fn ->
 Todos se pueden hablar entre sí mientras tengan sus direcciones (PID); incluso incluso puedo crear todo ecomoda si queremos
 
 ```elixir
-for _ <- 0..100 do
+for _ <- 0..1_000_000 do
   spawn(fn -> :ok  end)
 end
 ```
@@ -309,6 +315,12 @@ Kino.Layout.grid([form, frame], boxed: true, gap: 16)
 ### NERVES
 
 [Framework](https://nerves-project.org) para sistemas embebidos.
+
+<!-- livebook:{"break_markdown":true} -->
+
+### LiveNative
+
+Correr aplicaciones de elixir [nativamente](https://native.live) (Orientado a cross platform development)
 
 ## Recursos Recomendados
 
