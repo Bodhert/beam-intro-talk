@@ -316,6 +316,26 @@ Kino.Layout.grid([form, frame], boxed: true, gap: 16)
 
 [Framework](https://nerves-project.org) para sistemas embebidos
 
-<!-- livebook:{"break_markdown":true} -->
+## Recursos Recomendados
 
+[excercism.io](https://exercism.io/tracks/elixir) aprende de elixir haciendo ejercicios de programación. está muy orientado a enseñarte las particularidades del lenguaje (no es programacion competitiva) 🌟
 
+[curso completo self paced de programacion funcional en Elixir](https://www.kth.se/social/course/ID1019/)
+
+[elixir in action](https://www.manning.com/books/elixir-in-action)
+
+## Colorario
+
+* Introduciendo tipos en un lenguaje no tipado: [gradual typing](https://elixir-lang.org/blog/2023/09/20/strong-arrows-gradual-typing/)
+* Metaprogramación
+* OTP
+
+## Preguntas y respuesta?
+
+## Referencias
+
+* [Learn You Some Erlang for Great Good!](https://learnyousomeerlang.com/introduction#what-is-erlang)
+* [let it crash philosophy](https://www.youtube.com/watch?v=sz3tMPkl5hI)
+* [elixir documentary](https://www.youtube.com/watch?v=lxYFOM3UJzo)
+* [programs as people](https://leftoversalad.com/c/015_programmingpeople/)
+* [concurrency and ai by josevalim](https://www.youtube.com/watch?v=pas9WdWIBHs)
