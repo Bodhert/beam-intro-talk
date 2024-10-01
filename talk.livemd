@@ -15,8 +15,7 @@ Mix.install(
 
 ## Erlang
 
-lenguaje de programación funcional, Dinamico, que corre sobre una maquina virtual (BEAM), diseñado especialmente concurrencia y la alta disponibilidad .
- inventado incialmente para manejar sistemas de telecomunicaciones. en 1986 por Ericsson.
+Lenguaje de programación funcional, dinámico, que corre sobre una máquina virtual (BEAM), diseñado especialmente para la concurrencia y la alta disponibilidad. Fue inventado inicialmente para manejar sistemas de telecomunicaciones en 1986 por Ericsson.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -24,19 +23,15 @@ lenguaje de programación funcional, Dinamico, que corre sobre una maquina virtu
 
 <!-- livebook:{"break_markdown":true} -->
 
-Una de las filosofias con las que se diseño el lenguaje es "let it crash", es decir, los sistemas eventualmente
- fallarán,es casí que imposible manejar todos los errores, entonces lo que hago es isolar el error en un proceso (no confundir con el concepto de proceso del Sistema Operativo),  "matarlo" y 
- volver a comenzar en un estado conocido.
+Una de las filosofías con las que se diseñó el lenguaje es "let it crash", es decir, los sistemas eventualmente fallarán, y es casi imposible manejar todos los errores. Por lo tanto, lo que se hace es aislar el error en un proceso (no confundir con el concepto de proceso del Sistema Operativo), "matarlo" y volver a comenzar en un estado conocido.
 
 <!-- livebook:{"break_markdown":true} -->
 
-se han preguntado muchas veces como simplemente apagando y encediendo la computadora se arregla el problema?
- bueno es algo similar.
+¿Se han preguntado muchas veces cómo, simplemente apagando y encendiendo la computadora, se arregla el problema? Bueno, es algo similar.
 
 ## Elixir
 
-es un lenguaje de programación funcional inventado en el 2011,que corre sobre la misma maquina virtual de erlang.
- el creador de Elixir, se preocupaba por que no habian casi buenos lenguajes para manejar de manera eficiente y efectiva la concurrencia, por lo que decidio crear Elixir, Es parecido a Erlang, pero con una sintaxis mas amigable y moderna. El creador era core contributor de Ruby on Rails, por lo que Elixir se asemeja en cierta forma a Ruby en cuanto a la sintaxis.
+Es un lenguaje de programación funcional, inventado en 2011, que corre sobre la misma máquina virtual que Erlang. El creador de Elixir se preocupaba porque no había muchos lenguajes buenos para manejar de manera eficiente y efectiva la concurrencia, por lo que decidió crear Elixir. Es parecido a Erlang, pero con una sintaxis más amigable y moderna. El creador fue core contributor de Ruby on Rails, por lo que Elixir se asemeja en cierta forma a Ruby en cuanto a la sintaxis.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -46,9 +41,9 @@ es un lenguaje de programación funcional inventado en el 2011,que corre sobre l
 
 ### Elixir 101
 
-Si se puediera definir los bloques de construccion del lenguaje, en mi **OPINIÓN** serían,
+Si se pudieran definir los bloques de construcción del lenguaje, en mi opinión serían:
 
-* modulos
+* módulos
 * funciones
 * listas
 * mapas
@@ -92,19 +87,19 @@ Hello.world_map()
 
 ```
 
-* Es de tipado dinámico, es decir no especificamos el tipo de dato, la maquina lo infier
-* inmutable, cuando se modifica algo, en verdad es un nuevo termino
+* Es de tipado dinámico, es decir, no especificamos el tipo de dato, la máquina lo infiere.
+* inmutable: cuando se modifica algo, en realidad es un nuevo término.
 
 <!-- livebook:{"break_markdown":true} -->
 
-### Menciones honorificas de otros lenguajes en BEAM
+### Menciones honoríficas de otros lenguajes en BEAM
 
-* [Gleam (2016)](https://gleam.run) soporte nativo de tipos y compilación a JavaScript
-* [LFE (2008)](https://lfe.io) implementación de lisp
+* [Gleam (2016)](https://gleam.run) soporte nativo de tipos y compilación a JavaScript.
+* [LFE (2008)](https://lfe.io) implementación de Lisp.
 
 ## Modelo de actores
 
-Los actores son la unidad basica de computación.
+Los actores son la unidad básica de computación.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -117,7 +112,6 @@ Kino.Process.render_seq_trace(fn ->
   _betty = spawn(fn ->
     :ok
   end)
-  
 
 end)
 ```
@@ -141,7 +135,7 @@ Kino.Process.render_seq_trace(fn ->
 end)
 ```
 
-Los actores solo se comunican entre si mediante mensajes, es lo único que puede modificar el "estado" del otro
+Los actores solo se comunican entre sí mediante mensajes; es lo único que puede modificar el "estado" del otro.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -171,7 +165,7 @@ Kino.Process.render_seq_trace(fn ->
 
 ```
 
-introducir nuevos actores es muy barato en terminos computacionales (a diferencia de en la vida real)
+Introducir nuevos actores es muy barato en términos computacionales (a diferencia de en la vida real).
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -192,7 +186,7 @@ Kino.Process.render_seq_trace(fn ->
   end)
 ```
 
-todos se pueden hablar entre si mientras tenga sus direcciones (PID), incluso puedo crear todo ecomoda si queremos
+Todos se pueden hablar entre sí mientras tengan sus direcciones (PID); incluso incluso puedo crear todo ecomoda si queremos
 
 ```elixir
 for _ <- 0..100 do
@@ -200,19 +194,19 @@ for _ <- 0..100 do
 end
 ```
 
-## de eso tan bueno... no dan tanto :(
+## de eso tan bueno... no dan tanto. :(
 
-* No es una bala de plata
+* No es una bala de plata.
 
-* puede ser muy bueno para manejar un servidor de videojuegos mas no para escribir un videojuego: [servidor de wow en elixir ](https://pikdum.dev/posts/thistle-tea/)
+* Puede ser muy bueno para manejar un servidor de videojuegos, pero no para escribir un videojuego: [servidor de WoW en Elixir](https://pikdum.dev/posts/thistle-tea/).
 
-* hacer paralelismo o concurrencia sobre cualquier problema, no lo va a solucionar mas rapido necesariamente, incluso lo podria hacer mas lento
+* Hacer paralelismo o concurrencia sobre cualquier problema no lo va a solucionar más rápido necesariamente; incluso podría hacerlo más lento.
 
-* escoge la herramienta adecuada para el trabajo adecuado, o incluso combina varias herramientas para lograr el mejor resultado posible
+* Escoge la herramienta adecuada para el trabajo adecuado, o incluso combina varias herramientas para lograr el mejor resultado posible.
 
-* No es particularmente bueno en procesamiento de señales (audio o imagenes), escribir drivers de sistema operativos, en general cosas que requieran muy bajo nivel, y operaciones de alto rendimiento en el espacio numerico, aunque se esta haciendo un esfuerzo para cambiar esto, en especial para apuntarle al público de machine learning,
+* No es particularmente bueno en procesamiento de señales (audio o imágenes), escribir drivers de sistemas operativos, o en general cosas que requieran muy bajo nivel y operaciones de alto rendimiento en el espacio numérico, aunque se está haciendo un esfuerzo para cambiar esto, en especial para apuntar al público de machine learning.
 
-* a pesar de sus limitantes, existe herramientas curiosas, como 🤯 [modelado 3d](https://www.wings3d.com).
+* A pesar de sus limitantes, existen herramientas curiosas, como 🤯 [modelado 3D](https://www.wings3d.com).
 
 ## Casos de uso exitoso
 
@@ -221,40 +215,40 @@ end
 <!-- livebook:{"break_markdown":true} -->
 
 En 2016, [WhatsApp](https://blog.quastor.org/p/whatsapp-scaled-1-billion-users-50-engineers) alcanzó más de mil millones de usuarios y tenía las siguientes estadísticas de carga:
-42 mil millones de mensajes enviados diariamente
-1.6 mil millones de imágenes enviadas diariamente
-250 millones de videos enviados diariamente
 
-* tiene uno de los cluster mas grandes conocidos de erlang
+* 42 mil millones de mensajes enviados diariamente.
+* 1.6 mil millones de imágenes enviadas diariamente.
+* 250 millones de videos enviados diariamente.
+* Tiene uno de los clústeres más grandes conocidos de Erlang.
 
 <!-- livebook:{"break_markdown":true} -->
 
 ### Discord
 
-Fue de los primeros que le aposto a elixir, en el [2017](https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users) tenian  5  milliones de usarios concurrentes y  millones de eventos por segundo
+Fue de los primeros que le apostó a Elixir. En [2017](https://discord.com/blog/how-discord-scaled-elixir-to-5-000-000-concurrent-users) tenían 5 millones de usuarios concurrentes y millones de eventos por segundo.
 
 <!-- livebook:{"break_markdown":true} -->
 
-### Menciones honorificas
+### Menciones honoríficas
 
-* [Helium](https://docs.helium.com/faq/open-source/#helium-blockchain): Blockchain que opera principalmente en Iot Devices, y la gran parte de su core esta escrito en erlang
-* [Sonic Pi](https://sonic-pi.net): Programa para hacer música con codigo. el "orquestador de instrumentos" está escrito en elixir
+* [Helium](https://docs.helium.com/faq/open-source/#helium-blockchain): Blockchain que opera principalmente en IoT devices, y gran parte de su core está escrito en Erlang.
+* [Sonic Pi](https://sonic-pi.net): Programa para hacer música con código. El "orquestador de instrumentos" está escrito en Elixir.
 * [Farmbot](https://farm.bot): Proyecto de agricultura de precisión. Las máquinas de FarmBot utilizan tecnología IoT para facilitar a los agricultores la gestión remota de sus jardines.
-* Bancolombia for the win (algún día): le están apostando a usar elixir:
+* Bancolombia for the win (algún día): le están apostando a usar Elixir:
   * https://github.com/bancolombia/distributed-performance-analyzer
   * https://github.com/bancolombia/async-dataflow
-* [touring live](https://touring-live.netlify.app/) aplicación en la que le das una foto de un lugar túristico y te detalles o una visita guiada.
+* [Touring Live](https://touring-live.netlify.app/): Aplicación en la que le das una foto de un lugar turístico y te da detalles o una visita guiada.
 
 ## Frameworks
 
-### WEB/creacion de aplicaciones
+### WEB/creación de aplicaciones
 
-* [phoenix](https://www.phoenixframework.org): el default para aplicaciones web.
-* [ash](https://hexdocs.pm/ash/what-is-ash.html): no es solo orientado a aplicaciones web, es más algo opinionado para constuir la capa de aplicación
+* [Phoenix](https://www.phoenixframework.org): El *default* para aplicaciones web.
+* [Ash](https://hexdocs.pm/ash/what-is-ash.html): No es solo orientado a aplicaciones web, es más algo opinado para construir la capa de aplicación.
 
 ### Machine learning
 
-* [NX](https://hexdocs.pm/nx/intro-to-nx.html) : Busca compilar nativamente un subset de elixir y apuntarle a las gpus
+* [NX](https://hexdocs.pm/nx/intro-to-nx.html): Busca compilar nativamente un *subset* de Elixir y apuntar a las GPUs.
 
 <!-- livebook:{"attrs":"eyJjb21waWxlciI6ImV4bGEiLCJtYXhfbmV3X3Rva2VucyI6MTAwLCJ0YXNrX2lkIjoic3BlZWNoX3RvX3RleHQiLCJ2YXJpYW50X2lkIjoid2hpc3Blcl90aW55In0","chunks":[[0,654],[656,1063]],"kind":"Elixir.KinoBumblebee.TaskCell","livebook_object":"smart_cell"} -->
 
@@ -314,19 +308,19 @@ Kino.Layout.grid([form, frame], boxed: true, gap: 16)
 
 ### NERVES
 
-[Framework](https://nerves-project.org) para sistemas embebidos
+[Framework](https://nerves-project.org) para sistemas embebidos.
 
 ## Recursos Recomendados
 
-[excercism.io](https://exercism.io/tracks/elixir) aprende de elixir haciendo ejercicios de programación. está muy orientado a enseñarte las particularidades del lenguaje (no es programacion competitiva) 🌟
+[Exercism.io](https://exercism.io/tracks/elixir): Aprende Elixir haciendo ejercicios de programación. Está muy orientado a enseñarte las particularidades del lenguaje (no es programación competitiva) 🌟
 
-[curso completo self paced de programacion funcional en Elixir](https://www.kth.se/social/course/ID1019/)
+[Curso completo self-paced de programación funcional en Elixir](https://www.kth.se/social/course/ID1019/)
 
-[elixir in action](https://www.manning.com/books/elixir-in-action)
+[Elixir in Action](https://www.manning.com/books/elixir-in-action)
 
 ## Colorario
 
-* Introduciendo tipos en un lenguaje no tipado: [gradual typing](https://elixir-lang.org/blog/2023/09/20/strong-arrows-gradual-typing/)
+* Introduciendo tipos en un lenguaje no tipado: [Gradual Typing](https://elixir-lang.org/blog/2023/09/20/strong-arrows-gradual-typing/)
 * Metaprogramación
 * OTP
 
