@@ -15,7 +15,7 @@ Mix.install(
 
 ## Erlang
 
-Lenguaje de programación funcional, dinámico, que corre sobre una máquina virtual (BEAM), diseñado especialmente para la concurrencia y la alta disponibilidad. Fue inventado inicialmente para manejar sistemas de telecomunicaciones en 1986 por Ericsson.
+Lenguaje de programación funcional, dinámico, que corre sobre una máquina virtual (BEAM) -> Bogdan/Björn's Erlang Abstract Machine, diseñado especialmente para la concurrencia y la alta disponibilidad. Fue inventado inicialmente para manejar sistemas de telecomunicaciones en 1986 por Ericsson.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -78,7 +78,7 @@ defmodule Hello do
     {:hello, :world}
   end
 
-  def world_map do
+  def world_map(test) do
     %{"hello" => "world"}
   end
   
@@ -86,10 +86,7 @@ end
 
 
 # Pattern matching
-# [head | tail] = [1, "hola", :ok]
-# tail
 
-Hello.world_map()
 
 ```
 
@@ -136,7 +133,7 @@ Kino.Process.render_seq_trace(fn ->
     :ok
   end)
 
-  send(betty, "te amo")
+  send(betty, :"betty_la_amo")
   
 end)
 ```
@@ -337,6 +334,10 @@ Correr aplicaciones de elixir [nativamente](https://native.live) (Orientado a cr
 * OTP
 
 ## Preguntas y respuesta?
+
+* como funciona el hot code swaping?
+* es beam una maquina jhon von newman
+* por que eligiria a elixir sobre erlang?
 
 ## Referencias
 
